@@ -23,7 +23,7 @@ public class ZkConnection {
   }
 
   private ZooKeeper connectToZk(String host, int port) throws IOException, InterruptedException {
-    ZooKeeper zooKeeper = new ZooKeeper("localhost:2181", 2000, new Watcher() {
+    ZooKeeper zooKeeper = new ZooKeeper(host+":"+port, 2000, new Watcher() {
       @Override
       public void process(WatchedEvent watchedEvent) {
         if (Event.KeeperState.SyncConnected.equals(watchedEvent.getState())) {
